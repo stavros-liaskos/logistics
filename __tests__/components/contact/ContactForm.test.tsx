@@ -7,7 +7,7 @@ describe('ContactForm', () => {
 
   it('renders form fields', () => {
     render(<ContactForm />);
-    
+
     expect(screen.getByLabelText(/name/i)).toBeInTheDocument();
     expect(screen.getByLabelText(/email/i)).toBeInTheDocument();
     expect(screen.getByLabelText(/message/i)).toBeInTheDocument();
@@ -15,7 +15,7 @@ describe('ContactForm', () => {
 
   it('handles form submission', async () => {
     render(<ContactForm />);
-    
+
     const nameInput = screen.getByLabelText(/name/i);
     const emailInput = screen.getByLabelText(/email/i);
     const messageInput = screen.getByLabelText(/message/i);
@@ -24,7 +24,7 @@ describe('ContactForm', () => {
     await user.type(nameInput, 'John Doe');
     await user.type(emailInput, 'john@example.com');
     await user.type(messageInput, 'Test message');
-    
+
     await user.click(submitButton);
 
     expect(submitButton).toBeDisabled();
@@ -38,7 +38,7 @@ describe('ContactForm', () => {
 
   it('requires all fields', async () => {
     render(<ContactForm />);
-    
+
     const form = screen.getByRole('form');
     await user.click(screen.getByRole('button'));
 

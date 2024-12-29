@@ -2,12 +2,12 @@ import Image from 'next/image';
 import { Button } from '@/components/ui/button';
 import { ArrowRight, Package, Globe, Clock } from 'lucide-react';
 import content from '@/content/index.json';
-import Link from "next/link";
+import Link from 'next/link';
 
 const Components = {
   Package: Package,
   Globe: Globe,
-  Clock: Clock
+  Clock: Clock,
 };
 
 export default function Home() {
@@ -46,9 +46,7 @@ export default function Home() {
             <h2 className="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">
               {content.home.features.title}
             </h2>
-            <p className="mt-4 text-lg text-gray-600">
-              {content.home.features.description}
-            </p>
+            <p className="mt-4 text-lg text-gray-600">{content.home.features.description}</p>
           </div>
 
           <div className="mt-20 grid grid-cols-1 gap-12 sm:grid-cols-2 lg:grid-cols-3">
@@ -56,18 +54,14 @@ export default function Home() {
               const IconComponent = Components[feature.icon as keyof typeof Components];
 
               return (
-                  <div key={key} className="text-center">
-                    <div className="mx-auto h-12 w-12 text-blue-600">
-                      <IconComponent className="h-12 w-12" />
-                    </div>
-                    <h3 className="mt-6 text-xl font-semibold text-gray-900">
-                      {feature.title}
-                    </h3>
-                    <p className="mt-4 text-gray-600">
-                      {feature.description}
-                    </p>
+                <div key={key} className="text-center">
+                  <div className="mx-auto h-12 w-12 text-blue-600">
+                    <IconComponent className="h-12 w-12" />
                   </div>
-              )
+                  <h3 className="mt-6 text-xl font-semibold text-gray-900">{feature.title}</h3>
+                  <p className="mt-4 text-gray-600">{feature.description}</p>
+                </div>
+              );
             })}
           </div>
         </div>

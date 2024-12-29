@@ -6,11 +6,11 @@ export const serviceIcons = {
   'Global Shipping': Globe,
   'Supply Chain': Briefcase,
   'Secure Handling': ShieldCheck,
-  'Customer Support': Headphones
+  'Customer Support': Headphones,
 };
 
 export const contactIcons = {
   Phone,
   Email: Mail,
-  Address: MapPin
+  Address: MapPin,
 };

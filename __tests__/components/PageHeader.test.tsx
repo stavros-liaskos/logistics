@@ -9,14 +9,14 @@ describe('PageHeader', () => {
 
   it('renders title and description', () => {
     render(<PageHeader {...props} />);
-    
+
     expect(screen.getByText(props.title)).toBeInTheDocument();
     expect(screen.getByText(props.description)).toBeInTheDocument();
   });
 
   it('applies correct styling classes', () => {
     const { container } = render(<PageHeader {...props} />);
-    
+
     expect(container.firstChild).toHaveClass('bg-gray-50');
     expect(screen.getByText(props.title)).toHaveClass('text-4xl');
   });

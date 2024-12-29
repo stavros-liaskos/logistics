@@ -22,7 +22,7 @@ export default function ContactPage() {
             <div>
               <h2 className="text-2xl font-bold text-gray-900">{info.title}</h2>
               <div className="mt-8 space-y-8">
-                {info.sections.map((section) => {
+                {info.sections.map(section => {
                   const Icon = contactIcons[section.icon as keyof typeof contactIcons];
                   return (
                     <div key={section.title} className="flex items-start space-x-4">
@@ -33,7 +33,9 @@ export default function ContactPage() {
                         <h3 className="font-semibold text-gray-900">{section.title}</h3>
                         <div className="mt-2 space-y-1">
                           {section.details.map((detail, key) => (
-                            <p key={key} className="text-gray-600">{detail}</p>
+                            <p key={key} className="text-gray-600">
+                              {detail}
+                            </p>
                           ))}
                         </div>
                       </div>

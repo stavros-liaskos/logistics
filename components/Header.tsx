@@ -20,7 +20,7 @@ export default function Header() {
           </div>
 
           <div className="hidden md:flex md:items-center md:space-x-8">
-            {content.navigation.items.map((item) => (
+            {content.navigation.items.map(item => (
               <Link
                 key={item.title}
                 href={item.href}
@@ -40,7 +40,7 @@ export default function Header() {
             aria-label="Toggle menu"
           >
             <svg
-              className={cn("h-6 w-6", isOpen ? "hidden" : "block")}
+              className={cn('h-6 w-6', isOpen ? 'hidden' : 'block')}
               fill="none"
               viewBox="0 0 24 24"
               strokeWidth="1.5"
@@ -50,7 +50,7 @@ export default function Header() {
               <path strokeLinecap="round" strokeLinejoin="round" d="M4 6h16M4 12h16M4 18h16" />
             </svg>
             <svg
-              className={cn("h-6 w-6", isOpen ? "block" : "hidden")}
+              className={cn('h-6 w-6', isOpen ? 'block' : 'hidden')}
               fill="none"
               viewBox="0 0 24 24"
               strokeWidth="1.5"
@@ -62,13 +62,9 @@ export default function Header() {
           </button>
         </div>
 
-        <div
-          id="mobile-menu"
-          className={cn("md:hidden", isOpen ? "block" : "hidden")}
-          aria-label="Mobile navigation"
-        >
+        <div id="mobile-menu" className={cn('md:hidden', isOpen ? 'block' : 'hidden')} aria-label="Mobile navigation">
           <div className="space-y-1 pb-3 pt-2">
-            {content.navigation.items.map((item) => (
+            {content.navigation.items.map(item => (
               <Link
                 key={item.title}
                 href={item.href}

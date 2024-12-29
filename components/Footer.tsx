@@ -11,10 +11,11 @@ export default function Footer() {
           <div>
             <h2 className="text-lg font-semibold mb-4">{content.footer.connect}</h2>
             <div className="space-y-3">
-              {content.company.phones.map((phone, key) => (<div key={key} className="flex items-center space-x-3">
-                    <Phone className="h-5 w-5 text-blue-400" aria-hidden="true"/>
-                    <span>{phone}</span>
-                  </div>
+              {content.company.phones.map((phone, key) => (
+                <div key={key} className="flex items-center space-x-3">
+                  <Phone className="h-5 w-5 text-blue-400" aria-hidden="true" />
+                  <span>{phone}</span>
+                </div>
               ))}
             </div>
           </div>

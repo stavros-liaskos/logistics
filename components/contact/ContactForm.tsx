@@ -23,44 +23,23 @@ export default function ContactForm() {
         <label htmlFor="name" className="block text-sm font-medium text-gray-700">
           {fields.name}
         </label>
-        <Input
-          type="text"
-          id="name"
-          name="name"
-          required
-          className="mt-1"
-          aria-required="true"
-        />
+        <Input type="text" id="name" name="name" required className="mt-1" aria-required="true" />
       </div>
       <div>
         <label htmlFor="email" className="block text-sm font-medium text-gray-700">
           {fields.email}
         </label>
-        <Input
-          type="email"
-          id="email"
-          name="email"
-          required
-          className="mt-1"
-          aria-required="true"
-        />
+        <Input type="email" id="email" name="email" required className="mt-1" aria-required="true" />
       </div>
       <div>
         <label htmlFor="message" className="block text-sm font-medium text-gray-700">
           {fields.message}
         </label>
-        <Textarea
-          id="message"
-          name="message"
-          rows={4}
-          required
-          className="mt-1"
-          aria-required="true"
-        />
+        <Textarea id="message" name="message" rows={4} required className="mt-1" aria-required="true" />
       </div>
-      <Button 
-        type="submit" 
-        className="w-full bg-blue-600 hover:bg-blue-700" 
+      <Button
+        type="submit"
+        className="w-full bg-blue-600 hover:bg-blue-700"
         disabled={isSubmitting}
         aria-disabled={isSubmitting}
       >

@@ -24,6 +24,7 @@ export default function Header() {
               <Link
                 key={item.title}
                 href={item.href}
+                data-testid={item.title}
                 className="text-base font-medium text-gray-600 hover:text-blue-600 transition-colors"
               >
                 {item.title}

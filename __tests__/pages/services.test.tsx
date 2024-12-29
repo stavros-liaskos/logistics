@@ -1,6 +1,7 @@
 import { render, screen } from '@testing-library/react';
 import ServicesPage from '@/app/services/page';
 import content from '@/content/index.json';
+import { describe, expect, it } from 'vitest';
 
 describe('ServicesPage', () => {
   it('renders page header', () => {

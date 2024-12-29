@@ -1,4 +1,5 @@
-import { render, screen, fireEvent, waitFor } from '@testing-library/react';
+import { describe, expect, it } from 'vitest';
+import { render, screen, waitFor } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import ContactForm from '@/components/contact/ContactForm';
 
@@ -8,17 +9,17 @@ describe('ContactForm', () => {
   it('renders form fields', () => {
     render(<ContactForm />);
 
-    expect(screen.getByLabelText(/name/i)).toBeInTheDocument();
+    expect(screen.getByLabelText(/Όνομα/i)).toBeInTheDocument();
     expect(screen.getByLabelText(/email/i)).toBeInTheDocument();
-    expect(screen.getByLabelText(/message/i)).toBeInTheDocument();
+    expect(screen.getByLabelText(/Μήνυμα/i)).toBeInTheDocument();
   });
 
   it('handles form submission', async () => {
     render(<ContactForm />);
 
-    const nameInput = screen.getByLabelText(/name/i);
+    const nameInput = screen.getByLabelText(/Όνομα/i);
     const emailInput = screen.getByLabelText(/email/i);
-    const messageInput = screen.getByLabelText(/message/i);
+    const messageInput = screen.getByLabelText(/Μήνυμα/i);
     const submitButton = screen.getByRole('button');
 
     await user.type(nameInput, 'John Doe');
@@ -28,11 +29,11 @@ describe('ContactForm', () => {
     await user.click(submitButton);
 
     expect(submitButton).toBeDisabled();
-    expect(screen.getByText(/sending/i)).toBeInTheDocument();
+    expect(screen.getByText(/Αποστολή/i)).toBeInTheDocument();
 
     await waitFor(() => {
       expect(submitButton).not.toBeDisabled();
-      expect(screen.getByText(/send message/i)).toBeInTheDocument();
+      expect(screen.getByText(/Αποστολή Μηνύματος/i)).toBeInTheDocument();
     });
   });
 

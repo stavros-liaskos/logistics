@@ -1,6 +1,7 @@
 import { render, screen } from '@testing-library/react';
 import ContactPage from '@/app/contact/page';
 import content from '@/content/index.json';
+import { describe, expect, it } from 'vitest';
 
 describe('ContactPage', () => {
   it('renders page header', () => {
@@ -21,7 +22,7 @@ describe('ContactPage', () => {
     render(<ContactPage />);
 
     content.contact.info.sections.forEach(section => {
-      expect(screen.getByText(section.title)).toBeInTheDocument();
+      expect(screen.getByTestId(section.title)).toBeInTheDocument();
       section.details.forEach(detail => {
         expect(screen.getByText(detail)).toBeInTheDocument();
       });

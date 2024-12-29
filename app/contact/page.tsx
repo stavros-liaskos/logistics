@@ -25,7 +25,7 @@ export default function ContactPage() {
                 {info.sections.map(section => {
                   const Icon = contactIcons[section.icon as keyof typeof contactIcons];
                   return (
-                    <div key={section.title} className="flex items-start space-x-4">
+                    <div key={section.title} className="flex items-start space-x-4" data-testid={section.title}>
                       <div className="flex-shrink-0">
                         <Icon className="h-6 w-6 text-blue-600" />
                       </div>

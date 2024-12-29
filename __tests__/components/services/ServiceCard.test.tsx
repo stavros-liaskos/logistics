@@ -1,3 +1,4 @@
+import { describe, expect, it } from 'vitest';
 import { render, screen } from '@testing-library/react';
 import ServiceCard from '@/components/services/ServiceCard';
 import { Truck } from 'lucide-react';

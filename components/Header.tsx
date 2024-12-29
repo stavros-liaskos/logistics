@@ -4,35 +4,29 @@ import { useState } from 'react';
 import Link from 'next/link';
 import { Truck } from 'lucide-react';
 import { cn } from '@/lib/utils';
-
+import content from '@/content/index.json';
 export default function Header() {
   const [isOpen, setIsOpen] = useState(false);
-
-  const navigation = [
-    { name: 'Home', href: '/' },
-    { name: 'Services', href: '/services' },
-    { name: 'Contact', href: '/contact' },
-  ];
 
   return (
     <header className="bg-white shadow-sm">
       <nav className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8" aria-label="Main">
         <div className="flex h-16 items-center justify-between">
           <div className="flex items-center">
-            <Link href="/" className="flex items-center space-x-2" aria-label="LogiTech Home">
+            <Link href="/" className="flex items-center space-x-2" aria-label={`${content.company.name} Aρχική`}>
               <Truck className="h-8 w-8 text-blue-600" aria-hidden="true" />
-              <span className="text-xl font-bold text-gray-900">LogiTech</span>
+              <span className="text-xl font-bold text-gray-900">{content.company.name}</span>
             </Link>
           </div>
-          
+
           <div className="hidden md:flex md:items-center md:space-x-8">
-            {navigation.map((item) => (
+            {content.navigation.items.map((item) => (
               <Link
-                key={item.name}
+                key={item.title}
                 href={item.href}
                 className="text-base font-medium text-gray-600 hover:text-blue-600 transition-colors"
               >
-                {item.name}
+                {item.title}
               </Link>
             ))}
           </div>
@@ -68,20 +62,20 @@ export default function Header() {
           </button>
         </div>
 
-        <div 
+        <div
           id="mobile-menu"
           className={cn("md:hidden", isOpen ? "block" : "hidden")}
           aria-label="Mobile navigation"
         >
           <div className="space-y-1 pb-3 pt-2">
-            {navigation.map((item) => (
+            {content.navigation.items.map((item) => (
               <Link
-                key={item.name}
+                key={item.title}
                 href={item.href}
                 className="block rounded-md px-3 py-2 text-base font-medium text-gray-600 hover:bg-gray-100 hover:text-blue-600"
                 onClick={() => setIsOpen(false)}
               >
-                {item.name}
+                {item.title}
               </Link>
             ))}
           </div>

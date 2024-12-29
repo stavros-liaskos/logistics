@@ -17,7 +17,7 @@ export default function ServicesPage() {
               <ServiceCard
                 key={service.title}
                 {...service}
-                icon={serviceIcons[service.title as keyof typeof serviceIcons]}
+                icon={serviceIcons[service.icon as keyof typeof serviceIcons]}
               />
             ))}
           </div>

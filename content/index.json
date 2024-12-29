@@ -1,0 +1,100 @@
+{
+  "company": {
+    "name": "LogiTech",
+    "phones": ["+1 (555) 123-4567", "+1 (555) 987-6543"],
+    "emails": ["contact@logitech.com", "support@logitech.com"],
+    "address": ["123 Logistics Way", "Business District", "New York, NY 10001"]
+  },
+  "home": {
+    "hero": {
+      "title": "Global Logistics Solutions for Your Business",
+      "description": "Streamline your supply chain with our comprehensive logistics services. We deliver efficiency, reliability, and innovation."
+    },
+    "features": {
+      "title": "Why Choose LogiTech",
+      "description": "We provide end-to-end logistics solutions tailored to your needs",
+      "items": [
+        {
+          "title": "Comprehensive Solutions",
+          "description": "From warehousing to distribution, we handle every aspect of your logistics needs."
+        },
+        {
+          "title": "Global Network",
+          "description": "Our worldwide network ensures your cargo reaches any destination efficiently."
+        },
+        {
+          "title": "24/7 Support",
+          "description": "Round-the-clock customer service to address your concerns anytime."
+        }
+      ]
+    }
+  },
+  "services": {
+    "page": {
+      "title": "Our Services",
+      "description": "Comprehensive logistics solutions tailored to your business needs"
+    },
+    "items": [
+      {
+        "title": "Transportation",
+        "description": "Efficient and reliable transportation solutions across land, sea, and air."
+      },
+      {
+        "title": "Warehousing",
+        "description": "State-of-the-art warehousing facilities with advanced inventory management."
+      },
+      {
+        "title": "Global Shipping",
+        "description": "International shipping services with customs clearance and documentation."
+      },
+      {
+        "title": "Supply Chain",
+        "description": "End-to-end supply chain solutions optimized for your business needs."
+      },
+      {
+        "title": "Secure Handling",
+        "description": "Specialized handling for sensitive and high-value cargo."
+      },
+      {
+        "title": "Customer Support",
+        "description": "24/7 dedicated customer support and shipment tracking."
+      }
+    ]
+  },
+  "contact": {
+    "page": {
+      "title": "Contact Us",
+      "description": "Get in touch with our team for any inquiries or support"
+    },
+    "form": {
+      "title": "Send us a message",
+      "description": "Fill out the form below and we'll get back to you as soon as possible.",
+      "fields": {
+        "name": "Name",
+        "email": "Email",
+        "message": "Message"
+      },
+      "buttons": {
+        "submit": "Send Message",
+        "submitting": "Sending..."
+      }
+    },
+    "info": {
+      "title": "Contact Information",
+      "sections": [
+        {
+          "title": "Phone",
+          "details": ["+1 (555) 123-4567", "+1 (555) 987-6543"]
+        },
+        {
+          "title": "Email",
+          "details": ["contact@logitech.com", "support@logitech.com"]
+        },
+        {
+          "title": "Address",
+          "details": ["123 Logistics Way", "Business District", "New York, NY 10001"]
+        }
+      ]
+    }
+  }
+}

@@ -3,12 +3,13 @@ import type { Metadata } from 'next';
 import { Inter } from 'next/font/google';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
+import content from '@/content/index.json';
 
 const inter = Inter({ subsets: ['latin'] });
 
 export const metadata: Metadata = {
-  title: 'LogiTech Solutions',
-  description: 'Your trusted logistics partner',
+  title: content.meta.title,
+  description: content.meta.description,
 };
 
 export default function RootLayout({

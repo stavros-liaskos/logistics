@@ -1,100 +1,147 @@
 {
+  "meta": {
+    "title": "SafeTaxPlan",
+    "description": "Ο αξιόπιστος συνεργάτης σας στη λογιστική και φοροτεχνική υποστήριξη"
+  },
+  "navigation": {
+    "items": [
+      {
+        "title": "Αρχική",
+        "href": "/"
+      },
+      {
+        "title": "Υπηρεσίες",
+        "href": "/services"
+      },
+      {
+        "title": "Επικοινωνία",
+        "href": "/contact"
+      }
+    ]
+  },
   "company": {
-    "name": "LogiTech",
-    "phones": ["+1 (555) 123-4567", "+1 (555) 987-6543"],
-    "emails": ["contact@logitech.com", "support@logitech.com"],
-    "address": ["123 Logistics Way", "Business District", "New York, NY 10001"]
+    "name": "SafeTaxPlan",
+    "phones": ["+30 213 033 0825", "+30 213 033 0827"],
+    "emails": ["npatiniotis@safetaxplan.gr"],
+    "address": {
+      "street": "Λεωφόρος Κηφισίας 123",
+      "area": "Χολαργός 155 61",
+      "city": "Αθήνα"
+    }
   },
   "home": {
     "hero": {
-      "title": "Global Logistics Solutions for Your Business",
-      "description": "Streamline your supply chain with our comprehensive logistics services. We deliver efficiency, reliability, and innovation."
+      "title": "Ολοκληρωμένη Λογιστική & Φοροτεχνική Υποστήριξη",
+      "description": "Απλοποιήστε την αλυσίδα εφοδιασμού σας με τις ολοκληρωμένες μας υπηρεσίες. Παρέχουμε αποδοτικότητα, αξιοπιστία και καινοτομία.",
+      "button": {
+        "text": "Μάθετε Περισσότερα",
+        "href": "/contact"
+      }
     },
     "features": {
-      "title": "Why Choose LogiTech",
-      "description": "We provide end-to-end logistics solutions tailored to your needs",
+      "title": "Η Ασφάλεια σας, το Πλάνο μας",
+      "description": "Παρέχουμε λύσεις λογιστικής και φοροτεχνικής υποστήριξης προσαρμοσμένες στις ανάγκες σας",
       "items": [
         {
-          "title": "Comprehensive Solutions",
-          "description": "From warehousing to distribution, we handle every aspect of your logistics needs."
+          "icon": "Package",
+          "title": "Εταιρίες",
+          "description": "Λογιστικές & φοροτεχνικές υπηρεσίες προς εταιρίες"
         },
         {
-          "title": "Global Network",
-          "description": "Our worldwide network ensures your cargo reaches any destination efficiently."
+          "icon": "Globe",
+          "title": "Μισθοδοσίες",
+          "description": "Υπηρεσίες μισθοδοσίας & εργατικά"
         },
         {
-          "title": "24/7 Support",
-          "description": "Round-the-clock customer service to address your concerns anytime."
+          "icon": "Clock",
+          "title": "Ιδιώτες",
+          "description": "Λογιστική υποστήριξη ιδιωτών"
         }
       ]
     }
   },
   "services": {
     "page": {
-      "title": "Our Services",
-      "description": "Comprehensive logistics solutions tailored to your business needs"
+      "title": "Οι Υπηρεσίες μας",
+      "description": "Ολοκληρωμένες λύσεις προσαρμοσμένες στις επιχειρηματικές σας ανάγκες"
     },
     "items": [
       {
-        "title": "Transportation",
-        "description": "Efficient and reliable transportation solutions across land, sea, and air."
+        "title": "Μεταφορές",
+        "icon": "Transportation",
+        "description": "Αποτελεσματικές και αξιόπιστες λύσεις μεταφοράς μέσω ξηράς, θάλασσας και αέρα."
       },
       {
-        "title": "Warehousing",
-        "description": "State-of-the-art warehousing facilities with advanced inventory management."
+        "title": "Αποθήκευση",
+        "icon": "Warehousing",
+        "description": "Σύγχρονες εγκαταστάσεις αποθήκευσης με προηγμένη διαχείριση αποθεμάτων."
       },
       {
-        "title": "Global Shipping",
-        "description": "International shipping services with customs clearance and documentation."
+        "title": "Διεθνείς Αποστολές",
+        "icon": "Global Shipping",
+        "description": "Υπηρεσίες διεθνών αποστολών με εκτελωνισμό και διαχείριση εγγράφων."
       },
       {
-        "title": "Supply Chain",
-        "description": "End-to-end supply chain solutions optimized for your business needs."
+        "title": "Αλυσίδα Εφοδιασμού",
+        "icon": "Supply Chain",
+        "description": "Λύσεις διαχείρισης αλυσίδας εφοδιασμού προσαρμοσμένες στις ανάγκες σας."
       },
       {
-        "title": "Secure Handling",
-        "description": "Specialized handling for sensitive and high-value cargo."
+        "title": "Ασφαλής Διαχείριση",
+        "icon": "Secure Handling",
+        "description": "Εξειδικευμένη διαχείριση ευαίσθητων και υψηλής αξίας φορτίων."
       },
       {
-        "title": "Customer Support",
-        "description": "24/7 dedicated customer support and shipment tracking."
+        "title": "Εξυπηρέτηση Πελατών",
+        "icon": "Customer Support",
+        "description": "24/7 εξειδικευμένη υποστήριξη πελατών και παρακολούθηση αποστολών."
       }
     ]
   },
   "contact": {
     "page": {
-      "title": "Contact Us",
-      "description": "Get in touch with our team for any inquiries or support"
+      "title": "Επικοινωνία",
+      "description": "Για οποιαδήποτε πληροφορία χρειαστείτε, μπορείτε να επικοινωνήσετε μαζί μας ή να μας επισκεφθείτε στα γραφεία της εταιρίας μας."
     },
     "form": {
-      "title": "Send us a message",
-      "description": "Fill out the form below and we'll get back to you as soon as possible.",
+      "title": "Στείλτε μας ένα μήνυμα",
+      "description": "Συμπληρώστε την παρακάτω φόρμα και θα επικοινωνήσουμε μαζί σας το συντομότερο δυνατό.",
       "fields": {
-        "name": "Name",
+        "name": "Όνομα",
         "email": "Email",
-        "message": "Message"
+        "message": "Μήνυμα"
       },
       "buttons": {
-        "submit": "Send Message",
-        "submitting": "Sending..."
+        "submit": "Αποστολή Μηνύματος",
+        "submitting": "Αποστολή..."
       }
     },
     "info": {
-      "title": "Contact Information",
+      "title": "Στοιχεία Επικοινωνίας",
       "sections": [
         {
-          "title": "Phone",
-          "details": ["+1 (555) 123-4567", "+1 (555) 987-6543"]
+          "title": "Τηλέφωνο",
+          "icon": "Phone",
+          "details": ["+30 213 033 0825", "+30 213 033 0827"]
         },
         {
           "title": "Email",
-          "details": ["contact@logitech.com", "support@logitech.com"]
+          "icon": "Email",
+          "details": ["npatiniotis@safetaxplan.gr"]
         },
         {
-          "title": "Address",
-          "details": ["123 Logistics Way", "Business District", "New York, NY 10001"]
+          "title": "Διεύθυνση",
+          "icon": "Address",
+          "details": ["Λεωφόρος Κηφισίας 123",
+            "Χολαργός 155 61",
+            "Αθήνα"]
         }
       ]
     }
+  },
+  "footer": {
+    "connect": "Επικοινωνία",
+    "location": "Διεύθυνση",
+    "copyright": "SafeTaxPlan. Όλα τα δικαιώματα διατηρούνται."
   }
 }

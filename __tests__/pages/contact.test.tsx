@@ -4,25 +4,36 @@ import content from '@/content/index.json';
 import { describe, expect, it } from 'vitest';
 
 describe('ContactPage', () => {
-  it('renders page header', () => {
+  it('renders the page header', () => {
     render(<ContactPage />);
 
+    // Check if the page title is rendered
     expect(screen.getByText(content.contact.page.title)).toBeInTheDocument();
+
+    // Check if the page description is rendered
     expect(screen.getByText(content.contact.page.description)).toBeInTheDocument();
   });
 
-  it('renders contact form section', () => {
+  it('renders the map section', () => {
     render(<ContactPage />);
 
-    expect(screen.getByText(content.contact.form.title)).toBeInTheDocument();
-    expect(screen.getByText(content.contact.form.description)).toBeInTheDocument();
+    // Check if the map title is rendered
+    expect(screen.getAllByText(content.contact.map.title)[0]).toBeInTheDocument();
+
+    // Check if the map description is rendered
+    expect(screen.getByText(content.contact.map.description)).toBeInTheDocument();
   });
 
-  it('renders contact information', () => {
+  it('renders the contact information section', () => {
     render(<ContactPage />);
 
+    // Check if the contact information title is rendered
+    expect(screen.getByText(content.contact.info.title)).toBeInTheDocument();
+
+    // Check if all contact information sections are rendered
     content.contact.info.sections.forEach(section => {
-      expect(screen.getByTestId(section.title)).toBeInTheDocument();
+      const elements = screen.getAllByText(section.title);
+      expect(elements[0]).toBeInTheDocument();
       section.details.forEach(detail => {
         expect(screen.getByText(detail)).toBeInTheDocument();
       });

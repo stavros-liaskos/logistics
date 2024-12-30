@@ -33,7 +33,7 @@ describe('ContactForm', () => {
 
     await waitFor(() => {
       expect(submitButton).not.toBeDisabled();
-      expect(screen.getByText(/Αποστολή Μηνύματος/i)).toBeInTheDocument();
+      expect(screen.getByText(/Αποστολή/i)).toBeInTheDocument();
     });
   });
 

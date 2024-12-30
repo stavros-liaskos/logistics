@@ -2,9 +2,9 @@
 
 import { useState } from 'react';
 import Link from 'next/link';
-import { Truck } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import content from '@/content/index.json';
+import Image from 'next/image';
 export default function Header() {
   const [isOpen, setIsOpen] = useState(false);
 
@@ -14,7 +14,7 @@ export default function Header() {
         <div className="flex h-16 items-center justify-between">
           <div className="flex items-center">
             <Link href="/" className="flex items-center space-x-2" aria-label={`${content.company.name} Aρχική`}>
-              <Truck className="h-8 w-8 text-blue-600" aria-hidden="true" />
+              <Image src="/logo.png" alt="logo" width={45} height={45} className="object-cover" />
               <span className="text-xl font-bold text-gray-900">{content.company.name}</span>
             </Link>
           </div>

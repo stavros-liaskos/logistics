@@ -1,14 +1,10 @@
 import Image from 'next/image';
 import { Button } from '@/components/ui/button';
-import { ArrowRight, Package, Globe, Clock } from 'lucide-react';
+import { ArrowRight } from 'lucide-react';
 import content from '@/content/index.json';
 import Link from 'next/link';
-
-const Components = {
-  Package: Package,
-  Globe: Globe,
-  Clock: Clock,
-};
+import ServiceCard from '@/components/services/ServiceCard';
+import { serviceIcons } from '@/lib/icons';
 
 export default function Home() {
   return (
@@ -40,18 +36,20 @@ export default function Home() {
       </section>
 
       {/* Features Section */}
-      <section className="py-24 bg-white">
+      <section className="my-24 bg-white">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="text-center">
-            <h2 className="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">
-              {content.home.features.title}
-            </h2>
+            {content.home.features.title && (
+              <h2 className="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">
+                {content.home.features.title}
+              </h2>
+            )}
             <p className="mt-4 text-lg text-gray-600">{content.home.features.description}</p>
           </div>
 
           <div className="mt-20 grid grid-cols-1 gap-12 sm:grid-cols-2 lg:grid-cols-3">
             {content.home.features.items.map((feature, key) => {
-              const IconComponent = Components[feature.icon as keyof typeof Components];
+              const IconComponent = serviceIcons[feature.icon as keyof typeof serviceIcons];
 
               return (
                 <div key={key} className="text-center">
@@ -63,6 +61,21 @@ export default function Home() {
                 </div>
               );
             })}
+          </div>
+        </div>
+      </section>
+
+      {/* Summary Section */}
+      <section className="py-24 bg-gray-50">
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+          <div className="grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-3">
+            {content.home.summary.items.map((summaryItem, key) => (
+              <ServiceCard
+                key={key}
+                {...summaryItem}
+                icon={serviceIcons[summaryItem.icon as keyof typeof serviceIcons]}
+              />
+            ))}
           </div>
         </div>
       </section>

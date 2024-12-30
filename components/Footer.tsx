@@ -1,4 +1,4 @@
-import { MapPin, Phone } from 'lucide-react';
+import { MapPin, Phone, Printer } from 'lucide-react';
 import content from '@/content/index.json';
 
 export default function Footer() {
@@ -11,12 +11,14 @@ export default function Footer() {
           <div>
             <h2 className="text-lg font-semibold mb-4">{content.footer.connect}</h2>
             <div className="space-y-3">
-              {content.company.phones.map((phone, key) => (
-                <div key={key} className="flex items-center space-x-3">
-                  <Phone className="h-5 w-5 text-blue-400" aria-hidden="true" />
-                  <span>{phone}</span>
-                </div>
-              ))}
+              <div className="flex items-center space-x-3">
+                <Phone className="h-5 w-5 text-blue-400" aria-hidden="true" />
+                <span>{content.company.phones[0]}</span>
+              </div>
+              <div className="flex items-center space-x-3">
+                <Printer className="h-5 w-5 text-blue-400" aria-hidden="true" />
+                <span>{content.company.phones[1]}</span>
+              </div>
             </div>
           </div>
 
@@ -24,11 +26,13 @@ export default function Footer() {
             <h2 className="text-lg font-semibold mb-4">{content.footer.location}</h2>
             <div className="flex items-start space-x-3">
               <MapPin className="h-5 w-5 text-blue-400 mt-1" aria-hidden="true" />
-              <address className="not-italic">
-                {content.company.address.street},<br />
-                {content.company.address.area},<br />
-                {content.company.address.city}
-              </address>
+              <a href={content.company.address.href} target="_blank" rel="noopener noreferrer">
+                <address className="not-italic">
+                  {content.company.address.street},<br />
+                  {content.company.address.area},<br />
+                  {content.company.address.city}
+                </address>
+              </a>
             </div>
           </div>
 

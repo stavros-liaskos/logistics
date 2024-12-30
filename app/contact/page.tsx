@@ -1,22 +1,22 @@
 import PageHeader from '@/components/PageHeader';
-import ContactForm from '@/components/contact/ContactForm';
 import content from '@/content/index.json';
 import { contactIcons } from '@/lib/icons';
+import AddressMap from '@/components/contact/AddressMap';
 
 export default function ContactPage() {
-  const { page, form, info } = content.contact;
+  const { page, map, info } = content.contact;
 
   return (
     <>
       <PageHeader title={page.title} description={page.description} />
       <div className="py-16 bg-gray-50">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-16">
-            <div>
-              <h2 className="text-2xl font-bold text-gray-900">{form.title}</h2>
-              <p className="mt-4 text-gray-600">{form.description}</p>
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-32">
+            <div className="hidden md:block">
+              <h2 className="text-2xl font-bold text-gray-900">{map.title}</h2>
+              <p className="mt-4 text-gray-600">{map.description}</p>
               <div className="mt-8">
-                <ContactForm />
+                <AddressMap />
               </div>
             </div>
             <div>
@@ -32,11 +32,40 @@ export default function ContactPage() {
                       <div>
                         <h3 className="font-semibold text-gray-900">{section.title}</h3>
                         <div className="mt-2 space-y-1">
-                          {section.details.map((detail, key) => (
-                            <p key={key} className="text-gray-600">
-                              {detail}
-                            </p>
-                          ))}
+                          {section.details.map(detail => {
+                            switch (section.icon) {
+                              case 'Email':
+                                return (
+                                  <a
+                                    href={`mailto:${section.href}`}
+                                    className="block mt-4 text-blue-600"
+                                    key={detail}
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                  >
+                                    {detail}
+                                  </a>
+                                );
+                              case 'Address':
+                                return (
+                                  <a
+                                    href={`${section.href}`}
+                                    className="block mt-4 text-blue-600"
+                                    key={detail}
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                  >
+                                    {detail}
+                                  </a>
+                                );
+                              default:
+                                return (
+                                  <p className="text-gray-600" key={detail}>
+                                    {detail}
+                                  </p>
+                                );
+                            }
+                          })}
                         </div>
                       </div>
                     </div>

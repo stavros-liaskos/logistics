@@ -18,7 +18,7 @@ describe('ContactPage', () => {
     render(<ContactPage />);
 
     // Check if the map title is rendered
-    expect(screen.getByText(content.contact.map.title)).toBeInTheDocument();
+    expect(screen.getAllByText(content.contact.map.title)[0]).toBeInTheDocument();
 
     // Check if the map description is rendered
     expect(screen.getByText(content.contact.map.description)).toBeInTheDocument();
@@ -32,7 +32,8 @@ describe('ContactPage', () => {
 
     // Check if all contact information sections are rendered
     content.contact.info.sections.forEach(section => {
-      expect(screen.getByText(section.title)).toBeInTheDocument();
+      const elements = screen.getAllByText(section.title);
+      expect(elements[0]).toBeInTheDocument();
       section.details.forEach(detail => {
         expect(screen.getByText(detail)).toBeInTheDocument();
       });

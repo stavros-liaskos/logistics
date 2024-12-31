@@ -2,9 +2,10 @@ import PageHeader from '@/components/PageHeader';
 import content from '@/content/index.json';
 import { contactIcons } from '@/lib/icons';
 import AddressMap from '@/components/contact/AddressMap';
+import ContactForm from '@/components/contact/ContactForm';
 
 export default function ContactPage() {
-  const { page, map, info } = content.contact;
+  const { page, map, info, form } = content.contact;
 
   return (
     <>
@@ -13,10 +14,10 @@ export default function ContactPage() {
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-32">
             <div className="hidden md:block">
-              <h2 className="text-2xl font-bold text-gray-900">{map.title}</h2>
-              <p className="mt-4 text-gray-600">{map.description}</p>
+              <h2 className="text-2xl font-bold text-gray-900">{form.title}</h2>
+              <p className="mt-4 text-gray-600">{form.description}</p>
               <div className="mt-8">
-                <AddressMap />
+                <ContactForm />
               </div>
             </div>
             <div>
@@ -71,6 +72,18 @@ export default function ContactPage() {
                     </div>
                   );
                 })}
+              </div>
+            </div>
+          </div>
+
+          <div className="py-24 bg-gray-50 hidden md:block">
+            <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+              <div className="text-center">
+                <h2 className="text-2xl font-bold text-gray-900">{map.title}</h2>
+                <p className="mt-4 text-gray-600">{map.description}</p>
+                <div className="mt-8 flex justify-center">
+                  <AddressMap />
+                </div>
               </div>
             </div>
           </div>

@@ -58,8 +58,8 @@ describe('ContactForm', () => {
     const submitButton = screen.getByRole('button', { name: buttons.submit });
     await user.click(submitButton);
 
-    expect(screen.getByText(content => content.startsWith(validations.name.required))).toBeInTheDocument();
-    expect(screen.getByText(content => content.startsWith(validations.email.required))).toBeInTheDocument();
-    expect(screen.getByText(content => content.startsWith(validations.message.required))).toBeInTheDocument();
+    expect(screen.getByText(validations.name.required)).toBeInTheDocument();
+    expect(screen.getByText(validations.email.required)).toBeInTheDocument();
+    expect(screen.getByText(validations.message.required)).toBeInTheDocument();
   });
 });

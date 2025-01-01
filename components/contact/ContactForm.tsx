@@ -6,15 +6,15 @@ import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
 import content from '@/content/index.json';
 import emailjs from '@emailjs/browser';
-import Script from 'next/script';
 import validateField from '@/lib/validateField';
-
-const IS_RECAPTCHA_ENABLED = process.env.NEXT_PUBLIC_ENABLE_RECAPTCHA === 'true';
+import ReCAPTCHA from 'react-google-recaptcha';
+import useRecaptcha from '@/hooks/useReCaptcha';
 
 interface FormErrors {
   name?: string;
   email?: string;
   message?: string;
+  reCaptcha?: string;
 }
 
 export default function ContactForm() {
@@ -23,14 +23,12 @@ export default function ContactForm() {
     name: '',
     email: '',
     message: '',
-    ...(IS_RECAPTCHA_ENABLED && { 'g-recaptcha-response': '' }),
+    'g-recaptcha-response': '',
   });
   const [errors, setErrors] = useState<FormErrors>({});
-  const { fields, buttons } = content.contact.form;
+  const { capchaToken, recaptchaRef, handleRecaptcha } = useRecaptcha();
 
-  // const handleReCaptcha = (token: string) => {
-  //   setFormData(prev => ({ ...prev, ['g-recaptcha-response']: token }));
-  // };
+  const { fields, buttons } = content.contact.form;
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const { name, value } = e.target;
@@ -61,25 +59,26 @@ export default function ContactForm() {
     }
 
     setIsSubmitting(true);
-    emailjs
-      .send(
-        process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID!,
-        process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID!,
-        { ...formData, contact_number: Date.now() },
-        {
-          publicKey: process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY!,
-        },
-      )
-      .then(() => {
-        console.log('SUCCESS!');
-      })
-      .catch(error => {
-        console.error('FAILED...', error.text);
-      })
-      .finally(() => {
-        setErrors({});
-        setIsSubmitting(false);
-      });
+    capchaToken &&
+      emailjs
+        .send(
+          process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID!,
+          process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID!,
+          { ...formData, contact_number: Date.now(), 'g-recaptcha-response': capchaToken },
+          {
+            publicKey: process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY!,
+          },
+        )
+        .then(() => {
+          console.log('SUCCESS!');
+        })
+        .catch(error => {
+          console.error('FAILED...', error.text);
+        })
+        .finally(() => {
+          setErrors({});
+          setIsSubmitting(false);
+        });
   };
 
   return (
@@ -145,21 +144,16 @@ export default function ContactForm() {
             </p>
           )}
         </div>
-        {IS_RECAPTCHA_ENABLED && (
-          <>
-            <Script src="https://www.google.com/recaptcha/api.js" />
-            <div
-              data-testid="recaptcha"
-              className="g-recaptcha"
-              data-sitekey={process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY}
-              data-callback="handleReCaptcha"
-            />
-          </>
-        )}
+        <ReCAPTCHA
+          ref={recaptchaRef}
+          sitekey={process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY}
+          onChange={handleRecaptcha}
+          data-testid="recaptcha"
+        />
         <Button
           type="submit"
           className="w-full bg-blue-600 hover:bg-blue-700"
-          disabled={isSubmitting || Object.values(errors).filter(Boolean).length > 0}
+          disabled={isSubmitting || Object.values(errors).filter(Boolean).length > 0 || !capchaToken}
           aria-disabled={isSubmitting}
         >
           {isSubmitting ? buttons.submitting : buttons.submit}

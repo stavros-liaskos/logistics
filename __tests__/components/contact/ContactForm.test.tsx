@@ -1,10 +1,18 @@
-import { describe, expect, it, vi } from 'vitest';
+import { vi, describe, expect, it } from 'vitest';
 import { render, screen, waitFor } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import ContactForm from '@/components/contact/ContactForm';
 import content from '@/content/index.json';
 
-process.env = { ...process.env, NEXT_PUBLIC_ENABLE_RECAPTCHA: 'true' };
+vi.mock('@/hooks/useReCaptcha', () => {
+  return {
+    default: () => ({
+      capchaToken: 'successful-token',
+      recaptchaRef: { current: null },
+      handleRecaptcha: vi.fn(),
+    }),
+  };
+});
 
 describe('ContactForm', () => {
   const user = userEvent.setup();
@@ -50,8 +58,8 @@ describe('ContactForm', () => {
     const submitButton = screen.getByRole('button', { name: buttons.submit });
     await user.click(submitButton);
 
-    expect(screen.getByText(validations.name.required)).toBeInTheDocument();
-    expect(screen.getByText(validations.email.required)).toBeInTheDocument();
-    expect(screen.getByText(validations.message.required)).toBeInTheDocument();
+    expect(screen.getByText(content => content.startsWith(validations.name.required))).toBeInTheDocument();
+    expect(screen.getByText(content => content.startsWith(validations.email.required))).toBeInTheDocument();
+    expect(screen.getByText(content => content.startsWith(validations.message.required))).toBeInTheDocument();
   });
 });

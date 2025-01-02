@@ -1,8 +1,10 @@
 import PageHeader from '@/components/PageHeader';
 import content from '@/content/index.json';
 import { contactIcons } from '@/lib/icons';
-import AddressMap from '@/components/contact/AddressMap';
+import dynamic from 'next/dynamic';
 import ContactForm from '@/components/contact/ContactForm';
+
+const AddressMap = dynamic(() => import('@/components/contact/AddressMap'));
 
 export default function ContactPage() {
   const { page, map, info, form } = content.contact;

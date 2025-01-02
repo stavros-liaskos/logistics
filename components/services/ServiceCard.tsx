@@ -8,7 +8,7 @@ interface ServiceCardProps {
 
 export default function ServiceCard({ title, description, icon: Icon }: ServiceCardProps) {
   return (
-    <div className="bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition-shadow">
+    <div className="bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition-shadow" data-testid="service-card">
       <div className="h-12 w-12 text-blue-600 mx-auto">
         <Icon className="h-12 w-12" />
       </div>

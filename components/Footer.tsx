@@ -1,4 +1,4 @@
-import { MapPin, Phone, Printer } from 'lucide-react';
+import { MapPin, Phone } from 'lucide-react';
 import content from '@/content/index.json';
 
 export default function Footer() {
@@ -14,10 +14,6 @@ export default function Footer() {
               <div className="flex items-center space-x-3">
                 <Phone className="h-5 w-5 text-blue-400" aria-hidden="true" />
                 <span>{content.company.phones[0]}</span>
-              </div>
-              <div className="flex items-center space-x-3">
-                <Printer className="h-5 w-5 text-blue-400" aria-hidden="true" />
-                <span>{content.company.phones[1]}</span>
               </div>
             </div>
           </div>

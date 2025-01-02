@@ -26,7 +26,7 @@ export default function ContactForm() {
     'g-recaptcha-response': '',
   });
   const [errors, setErrors] = useState<FormErrors>({});
-  const { capchaToken, recaptchaRef, handleRecaptcha } = useRecaptcha();
+  const { captchaToken, recaptchaRef, handleRecaptcha } = useRecaptcha();
 
   const { fields, buttons } = content.contact.form;
 
@@ -59,12 +59,12 @@ export default function ContactForm() {
     }
 
     setIsSubmitting(true);
-    capchaToken &&
+    captchaToken &&
       emailjs
         .send(
           process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID!,
           process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID!,
-          { ...formData, contact_number: Date.now(), 'g-recaptcha-response': capchaToken },
+          { ...formData, contact_number: Date.now(), 'g-recaptcha-response': captchaToken },
           {
             publicKey: process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY!,
           },
@@ -153,7 +153,7 @@ export default function ContactForm() {
         <Button
           type="submit"
           className="w-full bg-blue-600 hover:bg-blue-700"
-          disabled={isSubmitting || Object.values(errors).filter(Boolean).length > 0 || !capchaToken}
+          disabled={isSubmitting || Object.values(errors).filter(Boolean).length > 0 || !captchaToken}
           aria-disabled={isSubmitting}
         >
           {isSubmitting ? buttons.submitting : buttons.submit}

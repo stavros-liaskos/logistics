@@ -7,7 +7,7 @@ import content from '@/content/index.json';
 vi.mock('@/hooks/useReCaptcha', () => {
   return {
     default: () => ({
-      capchaToken: 'successful-token',
+      captchaToken: 'successful-token',
       recaptchaRef: { current: null },
       handleRecaptcha: vi.fn(),
     }),

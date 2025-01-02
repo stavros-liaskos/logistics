@@ -15,12 +15,10 @@ import {
   User,
   Goal,
   Scale,
-  Printer,
 } from 'lucide-react';
 
 export const serviceIcons = {
   Transportation: Truck,
-  Printer: Printer,
   Scale: Scale,
   Goal: Goal,
   User: User,
@@ -40,5 +38,4 @@ export const contactIcons = {
   Phone,
   Email: Mail,
   Address: MapPin,
-  Printer: Printer,
 };

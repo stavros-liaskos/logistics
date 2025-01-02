@@ -21,7 +21,7 @@
   },
   "company": {
     "name": "SafeTaxPlan",
-    "phones": ["+30 213 033 0825", "+30 213 033 0827"],
+    "phones": ["+30 210 652 3541"],
     "emails": ["npatiniotis@safetaxplan.gr"],
     "address": {
       "street": "Ασπασίας 72-74",
@@ -173,12 +173,7 @@
         {
           "title": "Τηλέφωνο",
           "icon": "Phone",
-          "details": ["+30 213 033 0825"]
-        },
-        {
-          "title": "Fax",
-          "icon": "Printer",
-          "details": ["+30 213 033 0827"]
+          "details": ["+30 210 652 3541"]
         },
         {
           "title": "Email",

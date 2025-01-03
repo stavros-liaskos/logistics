@@ -54,13 +54,13 @@ export default function Home() {
               const IconComponent = serviceIcons[feature.icon as keyof typeof serviceIcons];
 
               return (
-                <div key={key} className="text-center">
+                <Link key={key} className="text-center" href={feature.href}>
                   <div className="mx-auto h-12 w-12 text-blue-600">
                     <IconComponent className="h-12 w-12" />
                   </div>
                   <h3 className="mt-6 text-xl font-semibold text-gray-900">{feature.title}</h3>
                   <p className="mt-4 text-gray-600">{feature.description}</p>
-                </div>
+                </Link>
               );
             })}
           </div>

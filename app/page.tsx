@@ -1,5 +1,4 @@
 import Image from 'next/image';
-import { Button } from '@/components/ui/button';
 import { ArrowRight } from 'lucide-react';
 import content from '@/content/index.json';
 import Link from 'next/link';
@@ -7,6 +6,7 @@ import { serviceIcons } from '@/lib/icons';
 import dynamic from 'next/dynamic';
 
 const Summary = dynamic(() => import('@/components/home/Summary'));
+const Button = dynamic(() => import('@/components/ui/button'));
 
 export default function Home() {
   return (
@@ -26,7 +26,7 @@ export default function Home() {
               <h1 className="text-4xl font-bold tracking-tight sm:text-5xl lg:text-6xl">{content.home.hero.title}</h1>
               <p className="mt-6 text-xl text-gray-300">{content.home.hero.description}</p>
               <div className="mt-10">
-                <Link href={content.home.hero.button.href}>
+                <Link href={content.home.hero.button.href} aria-label={content.home.hero.title}>
                   <Button size="lg" className="bg-blue-600 hover:bg-blue-700">
                     {content.home.hero.button.text} <ArrowRight className="ml-2 h-5 w-5" />
                   </Button>
@@ -54,7 +54,7 @@ export default function Home() {
               const IconComponent = serviceIcons[feature.icon as keyof typeof serviceIcons];
 
               return (
-                <Link key={key} className="text-center" href={feature.href}>
+                <Link key={key} className="text-center" href={feature.href} aria-label={feature.title}>
                   <div className="mx-auto h-12 w-12 text-blue-600">
                     <IconComponent className="h-12 w-12" />
                   </div>

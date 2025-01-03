@@ -1,14 +1,17 @@
 'use client';
 
-import { useState } from 'react';
-import { Button } from '@/components/ui/button';
-import { Input } from '@/components/ui/input';
-import { Textarea } from '@/components/ui/textarea';
+import React, { useState } from 'react';
 import content from '@/content/index.json';
 import emailjs from '@emailjs/browser';
 import validateField from '@/lib/validateField';
 import ReCAPTCHA from 'react-google-recaptcha';
 import useRecaptcha from '@/hooks/useReCaptcha';
+import { Loader } from 'lucide-react';
+import type { TNotification } from '@/components/ui/notification';
+import dynamic from 'next/dynamic';
+import Button from '@/components/ui/button';
+import Textarea from '@/components/ui/textarea';
+import Input from '@/components/ui/input';
 
 interface FormErrors {
   name?: string;
@@ -16,17 +19,21 @@ interface FormErrors {
   message?: string;
   reCaptcha?: string;
 }
+const Notification = dynamic(() => import('@/components/ui/notification'));
+
+const initialFormData = {
+  name: '',
+  email: '',
+  message: '',
+  'g-recaptcha-response': '',
+};
 
 export default function ContactForm() {
   const [isSubmitting, setIsSubmitting] = useState(false);
-  const [formData, setFormData] = useState({
-    name: '',
-    email: '',
-    message: '',
-    'g-recaptcha-response': '',
-  });
+  const [formData, setFormData] = useState(initialFormData);
   const [errors, setErrors] = useState<FormErrors>({});
   const { captchaToken, recaptchaRef, handleRecaptcha } = useRecaptcha();
+  const [showNotification, setShowNotification] = useState<TNotification>('hide');
 
   const { fields, buttons } = content.contact.form;
 
@@ -71,18 +78,26 @@ export default function ContactForm() {
         )
         .then(() => {
           console.log('SUCCESS!');
+          setShowNotification('success');
         })
         .catch(error => {
           console.error('FAILED...', error.text);
+          setShowNotification('error');
         })
         .finally(() => {
           setErrors({});
           setIsSubmitting(false);
+          setTimeout(() => {
+            setFormData(initialFormData);
+            setErrors({});
+            setShowNotification('hide');
+          }, 5000);
         });
   };
 
   return (
     <>
+      <Notification show={showNotification} />
       <form onSubmit={handleSubmit} className="space-y-6" aria-label="Contact form">
         <div>
           <label htmlFor="name" className="block text-sm font-medium text-gray-700">
@@ -156,7 +171,13 @@ export default function ContactForm() {
           disabled={isSubmitting || Object.values(errors).filter(Boolean).length > 0 || !captchaToken}
           aria-disabled={isSubmitting}
         >
-          {isSubmitting ? buttons.submitting : buttons.submit}
+          {isSubmitting ? (
+            <>
+              <Loader className="animate-spin mr-2" /> {buttons.submitting}
+            </>
+          ) : (
+            buttons.submit
+          )}
         </Button>
       </form>
     </>

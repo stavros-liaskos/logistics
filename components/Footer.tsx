@@ -13,7 +13,7 @@ export default function Footer() {
             <div className="space-y-3">
               <div className="flex items-center space-x-3">
                 <Phone className="h-5 w-5 text-blue-400" aria-hidden="true" />
-                <a href={`tel:${content.company.phones[0]}`}>{content.company.phones[0]}</a>
+                <a href={`tel:${encodeURI(content.company.phones[0])}`}>{content.company.phones[0]}</a>
               </div>
             </div>
           </div>

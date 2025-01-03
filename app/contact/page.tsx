@@ -49,6 +49,18 @@ export default function ContactPage() {
                                     {detail}
                                   </a>
                                 );
+                              case 'Phone':
+                                return (
+                                  <a
+                                    href={encodeURI(section.href)}
+                                    className="block mt-4 text-blue-600"
+                                    key={detail}
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                  >
+                                    {detail}
+                                  </a>
+                                );
                               case 'Address':
                                 return (
                                   <a

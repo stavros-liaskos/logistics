@@ -14,11 +14,20 @@ vi.mock('@/hooks/useReCaptcha', () => {
   };
 });
 
+// vi.mock('@emailjs/browser', () => {
+//   return {
+//     default: () => ({
+//       send: vi.fn(),
+//     }),
+//     send: vi.fn(),
+//   };
+// });
+
 describe('ContactForm', () => {
   const user = userEvent.setup();
   const { fields, buttons, validations } = content.contact.form;
 
-  it('renders form fields', () => {
+  it('renders form fields', async () => {
     render(<ContactForm />);
 
     expect(screen.getByLabelText(fields.name)).toBeInTheDocument();
@@ -40,7 +49,6 @@ describe('ContactForm', () => {
     await user.type(messageInput, 'too small msg');
 
     await user.click(submitButton);
-
     expect(submitButton).toBeDisabled();
     expect(screen.getByText(validations.message.minLength)).toBeInTheDocument();
 
@@ -62,4 +70,34 @@ describe('ContactForm', () => {
     expect(screen.getByText(validations.email.required)).toBeInTheDocument();
     expect(screen.getByText(validations.message.required)).toBeInTheDocument();
   });
+
+  it('shows error notification on failed submission', async () => {
+    const { title, description } = content.contact.notification.error;
+    const user = userEvent.setup();
+    render(<ContactForm />);
+
+    // Fill out the form
+    await user.type(screen.getByLabelText(fields.name), 'Test User');
+    await user.type(screen.getByLabelText(fields.email), 'test@example.com');
+    await user.type(screen.getByLabelText(fields.message), 'Big enough message to pass validation');
+
+    // Submit the form
+    const submitButton = screen.getByRole('button', { name: buttons.submit });
+    await user.click(submitButton);
+
+    // Verify error notification (api call fails)
+    await waitFor(() => {
+      const notification = screen.getByRole('alert');
+      expect(notification).toHaveTextContent(`${title} ${description}`);
+      expect(notification).toHaveClass('bg-red-50', 'text-red-800');
+    });
+
+    // Verify notification disappears
+    await waitFor(
+      () => {
+        expect(screen.queryByRole('alert')).not.toBeInTheDocument();
+      },
+      { timeout: 7000 },
+    );
+  }, 7000);
 });

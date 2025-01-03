@@ -1,10 +1,10 @@
-import { render, screen } from '@testing-library/react';
+import { render, screen, waitFor } from '@testing-library/react';
 import Home from '../app/page';
 import content from '@/content/index.json';
 import { describe, expect, it } from 'vitest';
 
 describe('Home', () => {
-  it('renders the hero section', () => {
+  it('renders the hero section', async () => {
     render(<Home />);
 
     // Check if the hero title is rendered
@@ -13,8 +13,10 @@ describe('Home', () => {
     // Check if the hero description is rendered
     expect(screen.getByText(content.home.hero.description)).toBeInTheDocument();
 
-    // Check if the hero button is rendered
-    expect(screen.getByText(content.home.hero.button.text)).toBeInTheDocument();
+    await waitFor(() => {
+      // Check if the hero button is rendered
+      expect(screen.getByText(content.home.hero.button.text)).toBeInTheDocument();
+    });
   });
 
   it('renders the features section', () => {

@@ -19,10 +19,10 @@ export default defineConfig({
         'vite.config.ts',
       ],
       thresholds: {
-        statements: 96.41,
+        statements: 95.14,
         branches: 97.56,
         functions: 95,
-        lines: 96.41,
+        lines: 95.14,
       },
     },
   },

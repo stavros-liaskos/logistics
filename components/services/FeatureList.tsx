@@ -1,11 +1,12 @@
 interface FeatureListProps {
   title: string;
   features: string[];
+  index: number;
 }
 
-export default function FeatureList({ title, features }: FeatureListProps) {
+export default function FeatureList({ title, features, index }: FeatureListProps) {
   return (
-    <div className="bg-white p-8 rounded-lg shadow-md">
+    <div id={`service-${index}`} className="bg-white p-8 rounded-lg shadow-md">
       <h3 className="text-2xl font-bold text-gray-900 mb-6">{title}</h3>
       <ul className="space-y-3">
         {features.map((feature, index) => (

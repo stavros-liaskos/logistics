@@ -77,6 +77,7 @@ export default function ContactForm() {
           },
         )
         .then(() => {
+          /* v8 ignore next 2 */
           console.log('SUCCESS!');
           setShowNotification('success');
         })

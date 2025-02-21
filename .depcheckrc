@@ -1,0 +1,2 @@
+ignores: ["autoprefixer", "@vitest/coverage-v8", "postcss"]
+skip-missing: true

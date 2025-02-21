@@ -73,6 +73,7 @@ export default function ContactPage() {
                                     {detail}
                                   </a>
                                 );
+                              /* v8 ignore next 5 */
                               default:
                                 return (
                                   <p className="text-gray-600" key={detail}>

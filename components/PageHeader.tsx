@@ -1,4 +1,4 @@
-export interface PageHeaderProps {
+interface PageHeaderProps {
   title: string;
   description: string;
 }

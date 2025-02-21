@@ -10,6 +10,7 @@ export default defineConfig({
     environment: 'jsdom',
     setupFiles: ['./vitest.setup.ts'],
     coverage: {
+      provider: 'v8',
       exclude: [
         ...coverageConfigDefaults.exclude,
         'out/*',
@@ -17,12 +18,13 @@ export default defineConfig({
         'postcss.config.js',
         'tailwind.config.ts',
         'vite.config.ts',
+        'knip.ts',
       ],
       thresholds: {
-        statements: 95.14,
-        branches: 97.56,
-        functions: 95,
-        lines: 95.14,
+        statements: 100,
+        branches: 100,
+        functions: 100,
+        lines: 100,
       },
     },
   },
